@@ -1,0 +1,78 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[textwidth=18cm]{geometry}
+\usepackage{graphicx}  
+\usepackage{svg}
+\usepackage{url}        
+\usepackage{amsmath}   
+\usepackage{listings}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{epstopdf}
+\usepackage{python}
+\usepackage{subfiles}
+\usepackage{enumitem}
+\usepackage{outlines}
+\usepackage{fancyhdr}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage{ifthen}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=false,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Python,                 % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  %numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  %numbersep=5pt,                   % how far the line-numbers are from the code
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  xleftmargin=-0cm,
+  framesep=2pt,
+  framerule=1pt
+  }
+\title{Homework 3}
+\makeatletter
+\let\inserttitle\@title
+\makeatother
+
+\author{Yihui He}
+\affil{\href{mailto:yihuihe@fomail.com}{yihuihe@fomail.com}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{165B \inserttitle--Yihui He}
+\rhead{Section \thesection}
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\section{problem 1}
+\begin{enumerate}[label=(\alph*)]
+\item $(3+1)\times(3+1)\times(2+1)\times(2+1)=144$
+\item $Talent=Don't\ care\wedge AveHeight=NBA\_tall\wedge GreatCoach=Don't\ care\wedge TeamChemistry=Great$
+\item $True$, Because there's no negative example.
+\item $True$, All features have different values.
+\end{enumerate}
+
+\section{problem 2}
+\subfile{problem2}
+\section{problem 3}
+\subfile{problem3}
+\section{supplimentary}
+\subfile{problem4}
+\end{document}

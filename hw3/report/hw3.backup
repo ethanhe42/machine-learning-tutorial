@@ -1,0 +1,219 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[textwidth=18cm]{geometry}
+\usepackage{graphicx}  
+\usepackage{svg}
+\usepackage{url}        
+\usepackage{amsmath}   
+\usepackage{listings}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{epstopdf}
+\usepackage{enumitem}
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=false,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Python,                 % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  %numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  %numbersep=5pt,                   % how far the line-numbers are from the code
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  xleftmargin=-0cm,
+  framesep=2pt,
+  framerule=1pt
+  }
+\title{Homework 2}
+\author{Yihui He}
+
+\begin{document}
+\maketitle
+\section{problem 1}
+\begin{enumerate}[label=(\alph*)]
+\item $(3+1)\times3\times2\times2=36$
+\item $Talent=Don't\ care\wedge AveHeight=NBA\_tall\wedge GreatCoach=Don't\ care\wedge TeamChemistry=Great$
+\item $True$, Because there's no negative example.
+\item $True$, All features have different values.
+
+\end{enumerate}
+\section{problem 2}
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=\textwidth]{./figure_1.png}
+ % figure_1.png: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=
+ \caption{Decision Tree}
+ \label{fig:dtree}
+\end{figure}
+Below I show how decision is made.
+\begin{lstlisting}
+================================================================
+root
+----------------------------------------------------------------
+Talent impurity
+High 0.721928094887
+Medium 0.970950594455
+Low 0.918295834054
+information Gain 0.115313880099
+Total impurity 0.87338552819 
+
+AveHeight impurity
+NBA_tall 0.970950594455
+NBA_medium 0.650022421648
+NBA_short 0.970950594455
+information Gain 0.138096878636
+Total impurity 0.850602529652 
+
+GreatCoach impurity
+Yes 0.954434002925
+No 1.0
+information Gain 0.011482406826
+Total impurity 0.977217001462 
+
+TeamChemistry impurity
+Great 0.863120568567
+Okay 0.991076059838
+information Gain 0.0536038758816
+Total impurity 0.935095532407 
+
+I choose AveHeight
+================================================================
+root->AveHeight=NBA_tall
+----------------------------------------------------------------
+Talent impurity
+High 1.0
+Medium 0.0
+Low 1.0
+information Gain 0.170950594455
+Total impurity 0.8 
+
+GreatCoach impurity
+Yes 0.0
+No 0.811278124459
+information Gain 0.321928094887
+Total impurity 0.649022499567 
+
+TeamChemistry impurity
+Great 0.918295834054
+Okay 0.0
+information Gain 0.419973094022
+Total impurity 0.550977500433 
+
+I choose TeamChemistry
+================================================================
+root->AveHeight=NBA_tall->TeamChemistry=Great
+----------------------------------------------------------------
+Talent impurity
+High 0.0
+Medium 0.0
+Low 0.0
+information Gain 0.918295834054
+Total impurity 0.0 
+
+GreatCoach impurity
+Yes 0.0
+No 1.0
+information Gain 0.251629167388
+Total impurity 0.666666666667 
+
+I choose Talent
+================================================================
+root->AveHeight=NBA_medium
+----------------------------------------------------------------
+Talent impurity
+High 0.0
+Medium 0.0
+Low 1.0
+information Gain 0.316689088315
+Total impurity 0.333333333333 
+
+GreatCoach impurity
+Yes 0.811278124459
+No 0.0
+information Gain 0.109170338676
+Total impurity 0.540852082973 
+
+TeamChemistry impurity
+Great 0.0
+Okay 0.918295834054
+information Gain 0.190874504621
+Total impurity 0.459147917027 
+
+I choose Talent
+================================================================
+root->AveHeight=NBA_medium->Talent=Low
+----------------------------------------------------------------
+GreatCoach impurity
+Yes 0.0
+No 0.0
+information Gain 1.0
+Total impurity 0.0 
+
+TeamChemistry impurity
+Great 0.0
+Okay 0.0
+information Gain 1.0
+Total impurity 0.0 
+
+I choose GreatCoach
+================================================================
+root->AveHeight=NBA_short
+----------------------------------------------------------------
+Talent impurity
+Medium 0.918295834054
+Low 0.0
+information Gain 0.419973094022
+Total impurity 0.550977500433 
+
+GreatCoach impurity
+Yes 0.918295834054
+No 1.0
+information Gain 0.019973094022
+Total impurity 0.950977500433 
+
+TeamChemistry impurity
+Great 0.0
+Okay 1.0
+information Gain 0.170950594455
+Total impurity 0.8 
+
+I choose Talent
+================================================================
+root->AveHeight=NBA_short->Talent=Medium
+----------------------------------------------------------------
+GreatCoach impurity
+Yes 0.0
+No 1.0
+information Gain 0.251629167388
+Total impurity 0.666666666667 
+
+TeamChemistry impurity
+Okay 0.918295834054
+information Gain 0.0
+Total impurity 0.918295834054 
+
+I choose GreatCoach
+================================================================
+root->AveHeight=NBA_short->Talent=Medium->GreatCoach=No
+----------------------------------------------------------------
+TeamChemistry impurity
+Okay 1.0
+information Gain 0.0
+Total impurity 1.0 
+
+I choose TeamChemistry
+
+\end{lstlisting}
+  
+\end{document}

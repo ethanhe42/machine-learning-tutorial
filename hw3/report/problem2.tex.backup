@@ -1,0 +1,21 @@
+\documentclass[hw3.tex]{subfiles}
+ 
+\begin{document}
+\subsection{decision tree}
+Decision Tree is shown in Fig \ref{fig:dtree}\\
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=18cm]{../Ch03/figure_2.pdf}
+ % figure_1.png: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=
+ \caption{Decision Tree}
+ \label{fig:dtree}
+\end{figure}
+\subsection{Decision making}
+Below I show how decision is made.
+\lstinputlisting{../Ch03/decision.txt}
+\subsection{Evaluation}
+These are incorrectly classified exmaples. Also error rate.
+\lstinputlisting[language=c]{../Ch03/classify.txt}
+\end{document}
+
+
